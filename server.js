@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
 
     socket.on('send-message', (data) => {
         if (data.chatId && data.message) {
-            socket.io(data.chatId).emit('new-message', data);
+            io.to(data.chatId).emit('new-message', data);
             console.log(`Сообщение в чат ${data.chatId}: ${data.message}`);
         }
     });
